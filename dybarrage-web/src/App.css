@@ -1,0 +1,14 @@
+@import '~antd/dist/antd.css';
+
+.bg-light {
+  background-color: #f8f9fa!important;
+}
+
+.py-3 {
+  padding-top: 1rem!important;
+  padding-bottom: 1rem!important;
+}
+
+.mb-5 {
+  margin-bottom: 2rem!important;
+}
