@@ -2,12 +2,27 @@
 
 斗鱼弹幕抓取及实时弹幕数据可视化，分为crawler(弹幕抓取)，server(弹幕统计数据服务器)，web(统计数据可视化前端)三部分。
 
+正在开发中……
+
 ![预览](https://github.com/Crawler995/DouyuBarrage/blob/master/doc/preview.png)
 
 ## 运行
 
-1. 启动server模块（即启动spring boot服务器）
-2. 启动web模块（npm start），输入`localhost:3000?roomid=[斗鱼房间号]`即可开始爬取
+### 安装依赖
+```bash
+# dybarrage-crawler
+pip install -r requirements.txt
+# dybarrage-server
+# 学艺不精，我也不知道这个命令能不能用，我用IDEA自动安装的依赖……
+mvn clean install
+# dybarrage-web
+npm install
+```
+
+### 运行
+
+1. 启动server模块（即启动spring boot服务器，我用IDEA启动的，学艺不精，暂时不知道用命令行咋启动）
+2. 启动web模块（npm start），打开浏览器输入`localhost:3000?roomid=[斗鱼房间号]`即可开始爬取
 
 从用户角度来看，其实只做了“打开web页面”一件事就可以开始抓取弹幕，弹幕抓取进程由服务器负责启动。系统详细结构将在下面详述。
 
