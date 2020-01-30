@@ -1,5 +1,6 @@
 import pymysql
 import datetime
+import config
 
 class _DyBarrageDBHandler:
     def __init__(self):
@@ -20,7 +21,7 @@ class _DyBarrageDBHandler:
         ]
     
     def connect(self):
-        self.__conn = pymysql.connect(host='localhost', user='root', password='crawler995', charset='utf8')
+        self.__conn = pymysql.connect(host=config.host, user=config.user, password=config.password, charset='utf8')
         self.__cursor = self.__conn.cursor()
 
     def __create_db(self):

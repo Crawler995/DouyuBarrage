@@ -4,7 +4,7 @@
 
 正在开发中……
 
-![预览](https://github.com/Crawler995/DouyuBarrage/blob/master/doc/preview.png)
+![预览](https://github.com/Crawler995/DouyuBarrage/blob/master/doc/preview.jpg)
 
 ## 运行
 
@@ -13,45 +13,44 @@
 # dybarrage-crawler
 pip install -r requirements.txt
 # dybarrage-server
-# 学艺不精，我也不知道这个命令能不能用，我用IDEA自动安装的依赖……
 mvn clean install
 # dybarrage-web
 npm install
 ```
 
+### 准备
+
+1. 确保本地mysql数据库处于可用状态
+2. 打开dybarrage-crawler中的`config.ini`文件，修改其中的mysql连接设置
+3. 打开dybarrage-server中的`application.properties`文件，修改其中的`crawler.path`为`dybarrage-crawler`的绝对路径
+
 ### 运行
 
-1. 启动server模块（即启动spring boot服务器，我用IDEA启动的，学艺不精，暂时不知道用命令行咋启动）
-2. 启动web模块（npm start），打开浏览器输入`localhost:3000?roomid=[斗鱼房间号]`即可开始爬取
+```bash
+# dybarrage-server
+mvn spring-boot:run
+# dybarrage-web
+npm start
+```
 
-从用户角度来看，其实只做了“打开web页面”一件事就可以开始抓取弹幕，弹幕抓取进程由服务器负责启动。系统详细结构将在下面详述。
+然后打开浏览器，访问`localhost:3000?roomid=[斗鱼房间号]`即可，如`localhost:3000?roomid=12306`。
+
+不需要管`dybarrage-crawler`模块，其将会由`dybarrage-server`启动。
 
 ## 相关技术
 
-1. crawler
+1. `dybarrage-crawler`
 
-   Python 3.7
+   Python 3.7, Mysql
 
-   Mysql
+2. `dybarrage-server`
 
-2. server
+   Java 8, Spring Boot, Mybatis
 
-   Java 8
+3. `dybarrage-web`
 
-   Spring Boot
+   JavaScript, React,, Ant Design, Echarts
 
-   Mybatis
-
-3. web
-
-   JavaScript
-
-   React
-
-   Ant Design
-
-   Echarts
-   
 ## 架构
 
    ![系统运行基本流程](https://github.com/Crawler995/DouyuBarrage/blob/master/doc/process.jpg)
@@ -62,13 +61,13 @@ npm install
 
 注：baseURL = /api/room/{roomId}
 
-| 接口          | 描述             |
-| :------------ | :--------------- |
-| /roombaseinfo | 获取房间基本信息 |
-| /sysbaseinfo  | 获取系统基本信息 |
-| /chartdata    | 获取图表相关数据 |
-| /barragedata  | 获取弹幕信息     |
-| /crawl        | 心跳请求         |
+| 接口          | 描述                           |
+| :------------ | :----------------------------- |
+| /roombaseinfo | 获取房间基本信息               |
+| /sysbaseinfo  | 获取系统基本信息               |
+| /chartdata    | 获取图表相关数据               |
+| /barragedata  | 获取弹幕信息                   |
+| /crawl        | 心跳请求，保持弹幕抓取进程运行 |
 
 ## 一些闲聊
 

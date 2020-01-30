@@ -24,7 +24,6 @@ public class CrawlRequestService {
                 while(true) {
                     try {
                         Thread.sleep(5000);
-                        logger.info("proc num: " + crawlingProcesses.size());
                         for(String roomId : crawlingProcesses.keySet()) {
                             LiveProcess liveProcess = crawlingProcesses.get(roomId);
 
@@ -32,7 +31,7 @@ public class CrawlRequestService {
                             if(liveProcess.getLife() <= 0) {
                                 liveProcess.getProcess().destroy();
                                 crawlingProcesses.remove(roomId);
-                                logger.info("destroy " + roomId);
+                                logger.info("destroy crawl process: " + roomId);
                             }
                         }
                     } catch (InterruptedException e) {
@@ -45,8 +44,10 @@ public class CrawlRequestService {
 
     public void handleCrawlRequest(String roomId) {
         if(!crawlingProcesses.containsKey(roomId)) {
+            logger.info("add crawl process: " + roomId);
             startCrawlProcess(roomId);
         } else {
+            logger.info("recover crawl process: " + roomId);
             crawlingProcesses.get(roomId).recover();
         }
     }
