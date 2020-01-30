@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import space.zhang.dybarrage.bean.RealtimeChartData;
-import space.zhang.dybarrage.service.RealtimeChartDataService;
+import space.zhang.dybarrage.bean.ChartData;
+import space.zhang.dybarrage.service.ChartDataService;
 
 @RestController
 @RequestMapping("/api/room")
-public class RealtimeChartDataController {
+public class ChartDataController {
     @Autowired
-    private RealtimeChartDataService realtimeChartDataService;
+    private ChartDataService chartDataService;
 
     @RequestMapping("/{roomId}/chartdata")
-    public RealtimeChartData getRealtimeChartData(@PathVariable String roomId) {
-        return realtimeChartDataService.getRealtimeChartData(roomId);
+    public ChartData getChartData(@PathVariable String roomId) {
+        return chartDataService.getChartData(roomId);
     }
 }

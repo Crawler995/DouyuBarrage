@@ -37,7 +37,7 @@ export default class SenderLevelBarChart extends React.Component {
         // }
       },
       yAxis: {
-        name: '用户数',
+        name: '发送弹幕数',
         type: 'value'
       },
       series: [{

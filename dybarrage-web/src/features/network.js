@@ -15,3 +15,11 @@ export const getSystemBaseInfo = (roomId) => {
 export const getChartData = (roomId) => {
   return axiosIns.get(`room/${roomId}/chartdata`);
 }
+
+export const getBarrageData = (roomId) => {
+  return axiosIns.get(`room/${roomId}/barragedata`);
+}
+
+export const crawlHeartbeat = (roomId) => {
+  return axiosIns.get(`room/${roomId}/crawl`);
+}

@@ -8,7 +8,7 @@ import space.zhang.dybarrage.bean.SenderLevelData;
 import java.util.ArrayList;
 
 @Repository
-public interface RealtimeChartDataMapper {
+public interface ChartDataMapper {
     @Select("select (count(*) / 5.0) as barrage_send_velocity from barrages " +
             "where rid=#{roomId} and stime>=#{fiveSecAgoStr};")
     double getBarrageSendVelocity(String roomId, String fiveSecAgoStr);
@@ -19,7 +19,6 @@ public interface RealtimeChartDataMapper {
             "order by level")
     ArrayList<SenderLevelData> getSenderLevelData(String roomId);
 
-    @Select("select nn as username, txt as barrage, ic as avatar_url from barrages " +
-            "where rid=#{roomId} and stime>=#{fiveSecAgoStr} limit 10;")
+
     ArrayList<BarrageData> getSeveralBarrages(String roomId, String fiveSecAgoStr);
 }

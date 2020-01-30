@@ -61,7 +61,6 @@ class _DyBarrageDBHandler:
                         insert_value_sql += '\'' + barrage[k].replace('\'', '') + '\', '
 
         sql = insert_col_sql[0:-2] + ') ' + insert_value_sql[0:-2] + ');'
-        print(sql)
         
         self.__cursor.execute(sql)
         self.__conn.commit()

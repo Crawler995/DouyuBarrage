@@ -2,18 +2,16 @@ package space.zhang.dybarrage.bean;
 
 import java.util.ArrayList;
 
-public class RealtimeChartData {
+public class ChartData {
     private double barrageSendVelocity;
     private ArrayList<SenderLevelData> senderLevel;
-    private ArrayList<BarrageData> severalBarrages;
 
-    public RealtimeChartData() {
+    public ChartData() {
     }
 
-    public RealtimeChartData(double barrageSendVelocity, ArrayList<SenderLevelData> senderLevel, ArrayList<BarrageData> severalBarrages) {
+    public ChartData(double barrageSendVelocity, ArrayList<SenderLevelData> senderLevel) {
         this.barrageSendVelocity = barrageSendVelocity;
         this.senderLevel = senderLevel;
-        this.severalBarrages = severalBarrages;
     }
 
     public double getBarrageSendVelocity() {
@@ -30,13 +28,5 @@ public class RealtimeChartData {
 
     public void setSenderLevel(ArrayList<SenderLevelData> senderLevel) {
         this.senderLevel = senderLevel;
-    }
-
-    public ArrayList<BarrageData> getSeveralBarrages() {
-        return severalBarrages;
-    }
-
-    public void setSeveralBarrages(ArrayList<BarrageData> severalBarrages) {
-        this.severalBarrages = severalBarrages;
     }
 }
