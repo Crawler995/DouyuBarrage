@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 
 @Service
 public class CrawlRequestService {
@@ -24,13 +25,16 @@ public class CrawlRequestService {
                 while(true) {
                     try {
                         Thread.sleep(5000);
-                        for(String roomId : crawlingProcesses.keySet()) {
+
+                        Iterator<String> iterator = crawlingProcesses.keySet().iterator();
+                        while(iterator.hasNext()) {
+                            String roomId = iterator.next();
                             LiveProcess liveProcess = crawlingProcesses.get(roomId);
 
                             liveProcess.reduceLife(5);
                             if(liveProcess.getLife() <= 0) {
                                 liveProcess.getProcess().destroy();
-                                crawlingProcesses.remove(roomId);
+                                iterator.remove();
                                 logger.info("destroy crawl process: " + roomId);
                             }
                         }
