@@ -14,8 +14,8 @@ public class BarrageDataService {
     @Autowired
     private BarrageDataMapper barrageDataMapper;
 
-    public ArrayList<BarrageData> getBarrageData(String roomId) {
-        return barrageDataMapper.getBarrageData(roomId, getFiveSecAgoStr());
+    public ArrayList<BarrageData> getBarrageData(String roomId, String num) {
+        return barrageDataMapper.getBarrageData(roomId, getFiveSecAgoStr(), Integer.parseInt(num));
     }
 
     private String getFiveSecAgoStr() {

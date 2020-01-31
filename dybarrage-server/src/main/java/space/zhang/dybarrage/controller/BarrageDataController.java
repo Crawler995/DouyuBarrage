@@ -3,6 +3,7 @@ package space.zhang.dybarrage.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import space.zhang.dybarrage.bean.BarrageData;
 import space.zhang.dybarrage.service.BarrageDataService;
@@ -16,7 +17,8 @@ public class BarrageDataController {
     private BarrageDataService barrageDataService;
 
     @RequestMapping("/{roomId}/barragedata")
-    public ArrayList<BarrageData> getBarrageData(@PathVariable  String roomId) {
-        return barrageDataService.getBarrageData(roomId);
+    public ArrayList<BarrageData> getBarrageData(@PathVariable String roomId,
+                                                 @RequestParam(name="num", defaultValue="10") String num) {
+        return barrageDataService.getBarrageData(roomId, num);
     }
 }

@@ -17,7 +17,7 @@ export const getChartData = (roomId) => {
 }
 
 export const getBarrageData = (roomId) => {
-  return axiosIns.get(`room/${roomId}/barragedata`);
+  return axiosIns.get(`room/${roomId}/barragedata?num=15`);
 }
 
 export const crawlHeartbeat = (roomId) => {

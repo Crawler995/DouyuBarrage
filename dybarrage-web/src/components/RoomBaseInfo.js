@@ -75,8 +75,8 @@ export default class RoomBaseInfo extends React.Component {
             extra={
               roomBaseInfo.isLive ? 
               [
-                <Tag color="red">{'热度 ' + roomBaseInfo.hotNumber}</Tag>,
-                <Tag color="orange">{'开播时间 ' + roomBaseInfo.startTime}</Tag>
+                <Tag color="red" key={0}>{'热度 ' + roomBaseInfo.hotNumber}</Tag>,
+                <Tag color="orange" key={1}>{'开播时间 ' + roomBaseInfo.startTime}</Tag>
               ] :
               [
                 <Tag color="red">{'未开播'}</Tag>,

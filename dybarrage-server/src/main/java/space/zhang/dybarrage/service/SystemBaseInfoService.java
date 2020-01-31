@@ -26,18 +26,11 @@ public class SystemBaseInfoService {
 
         ArrayList<NameDataCouple> res = new ArrayList<>();
 
-        res.add(new NameDataCouple("系统此次运行时间", getAppThisRunTime()));
-        res.add(new NameDataCouple("系统总共运行时间", "0"));
         res.add(new NameDataCouple("此次获取弹幕数", String.valueOf(barrageNumFromThisLaunch)));
         res.add(new NameDataCouple("总共获取弹幕数", String.valueOf(totalBarrageNum)));
         res.add(new NameDataCouple("此次发送弹幕用户数", String.valueOf(senderNumFromThisLaunch)));
         res.add(new NameDataCouple("总共发送弹幕用户数", String.valueOf(totalSenderNum)));
 
         return res;
-    }
-
-    private String getAppThisRunTime() {
-        long now = new Date().getTime();
-        return String.valueOf((int)((now - SystemBaseInfoService.appThisLaunchTime) / 1000));
     }
 }

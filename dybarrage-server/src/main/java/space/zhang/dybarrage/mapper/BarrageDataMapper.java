@@ -9,6 +9,6 @@ import java.util.ArrayList;
 @Repository
 public interface BarrageDataMapper {
     @Select("select nn as username, txt as barrage, ic as avatar_url from barrages " +
-            "where rid=#{roomId} and stime>=#{fiveSecAgoStr} limit 8;")
-    ArrayList<BarrageData> getBarrageData(String roomId, String fiveSecAgoStr);
+            "where rid=#{roomId} and stime>=#{fiveSecAgoStr} limit ${num};")
+    ArrayList<BarrageData> getBarrageData(String roomId, String fiveSecAgoStr, int num);
 }

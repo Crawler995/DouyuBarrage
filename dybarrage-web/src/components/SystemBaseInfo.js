@@ -44,7 +44,7 @@ export default class SystemBaseInfo extends React.Component {
       <Row>
         {
           systemBaseInfo.map((item, index) =>
-            <Col span={8} key={index}>
+            <Col span={6} key={index}>
               <Statistic title={item.name} value={item.data} />
             </Col>
           )
