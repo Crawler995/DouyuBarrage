@@ -3,6 +3,7 @@ package space.zhang.dybarrage.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import space.zhang.dybarrage.bean.ChartData;
+import space.zhang.dybarrage.bean.NameDataCouple;
 import space.zhang.dybarrage.bean.SenderLevelData;
 import space.zhang.dybarrage.mapper.ChartDataMapper;
 
@@ -17,9 +18,10 @@ public class ChartDataService {
 
     public ChartData getChartData(String roomId) {
         double barrageSendVelocity = chartDataMapper.getBarrageSendVelocity(roomId, getFiveSecAgoStr());
-        ArrayList<SenderLevelData> senderLevelData = chartDataMapper.getSenderLevelData(roomId);
+        ArrayList<NameDataCouple> senderLevelData = chartDataMapper.getSenderLevelData(roomId);
+        ArrayList<NameDataCouple> topSon = chartDataMapper.getTopSon(roomId);
 
-        return new ChartData(barrageSendVelocity, senderLevelData);
+        return new ChartData(barrageSendVelocity, senderLevelData, topSon);
     }
 
     private String getFiveSecAgoStr() {

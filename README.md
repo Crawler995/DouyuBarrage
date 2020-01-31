@@ -49,7 +49,7 @@ npm start
 
 3. `dybarrage-web`
 
-   JavaScript, React,, Ant Design, Echarts
+   JavaScript, React, Ant Design, Echarts
 
 ## 架构
 

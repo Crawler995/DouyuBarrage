@@ -2,7 +2,7 @@ package space.zhang.dybarrage.mapper;
 
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-import space.zhang.dybarrage.bean.BarrageData;
+import space.zhang.dybarrage.bean.NameDataCouple;
 import space.zhang.dybarrage.bean.SenderLevelData;
 
 import java.util.ArrayList;
@@ -13,12 +13,16 @@ public interface ChartDataMapper {
             "where rid=#{roomId} and stime>=#{fiveSecAgoStr};")
     double getBarrageSendVelocity(String roomId, String fiveSecAgoStr);
 
-    @Select("select level, count(*) as user_num from barrages " +
+    @Select("select level, count(*) from barrages " +
             "where rid=#{roomId} " +
             "group by level " +
             "order by level")
-    ArrayList<SenderLevelData> getSenderLevelData(String roomId);
+    ArrayList<NameDataCouple> getSenderLevelData(String roomId);
 
-
-    ArrayList<BarrageData> getSeveralBarrages(String roomId, String fiveSecAgoStr);
+    @Select("select nn, count(*) from barrages " +
+            "where rid=#{roomId} " +
+            "group by nn " +
+            "order by count(*) desc " +
+            "limit 20")
+    ArrayList<NameDataCouple> getTopSon(String roomId);
 }

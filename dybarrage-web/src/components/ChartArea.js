@@ -1,6 +1,7 @@
 import React from 'react';
 import RealtimeBarrageVelocityLineChart from './RealtimeBarrageVelocityLineChart';
 import SenderLevelBarChart from './SenderLevelBarChart';
+import TopSonPieChart from './TopSonPieChart';
 
 import {getChartData} from '../features/network';
 import {getRoomIdFromUrl} from '../features/util';
@@ -13,7 +14,8 @@ export default class ChartArea extends React.Component {
     senderLevel: {
       xData: [],
       yData: []
-    }
+    },
+    topSon: []
   }
   dataUpdateFlag = null;
 
@@ -36,9 +38,13 @@ export default class ChartArea extends React.Component {
       this.setState({
         barrageVelocity,
         senderLevel: {
-          xData: data.senderLevel.map(item => item.level),
-          yData: data.senderLevel.map(item => item.userNum)
-        }
+          xData: data.senderLevel.map(item => item.name),
+          yData: data.senderLevel.map(item => item.data)
+        },
+        topSon: {
+          xData: data.topSon.map(item => item.name),
+          yData: data.topSon.map(item => item.data)
+        },
       });
     })
     .catch(err => {
@@ -64,6 +70,12 @@ export default class ChartArea extends React.Component {
           id="realtime-barrage-velocity-line-chart"
           height={300}
           data={this.state.barrageVelocity}
+        />
+
+        <TopSonPieChart
+          id="top-son-pie-chart"
+          height={400}
+          data={this.state.topSon}
         />
 
         <SenderLevelBarChart 

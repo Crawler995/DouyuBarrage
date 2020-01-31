@@ -1,5 +1,5 @@
 import React from 'react';
-import { Descriptions } from 'antd';
+import { Statistic, Row, Col } from 'antd';
 import {getSystemBaseInfo} from '../features/network';
 import {SYS_DATA_UPDATE_INTERVAL} from '../features/constants';
 import {getRoomIdFromUrl} from '../features/util';
@@ -41,15 +41,15 @@ export default class SystemBaseInfo extends React.Component {
     const {systemBaseInfo} = this.state;
 
     return (
-      <Descriptions>
+      <Row>
         {
           systemBaseInfo.map((item, index) =>
-            <Descriptions.Item key={index} label={item.name}>
-              {item.data}
-            </Descriptions.Item>
+            <Col span={8} key={index}>
+              <Statistic title={item.name} value={item.data} />
+            </Col>
           )
         }
-      </Descriptions>
+      </Row>
     );
   }
 }

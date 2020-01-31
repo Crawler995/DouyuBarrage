@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageHeader, Spin } from 'antd';
+import { PageHeader, Spin, Tag } from 'antd';
 
 import {getRoomBaseInfo} from '../features/network';
 import {ROOM_DATA_UPDATE_INTERVAL} from '../features/constants';
@@ -27,7 +27,8 @@ export default class RoomBaseInfo extends React.Component {
           roomTitle: data.room_name,
           hotNumber: data.hn,
           startTime: data.start_time,
-          avatarURL: data.avatar
+          avatarURL: data.avatar,
+          isLive: data.room_status === '1'
         }
       });
     })
@@ -55,6 +56,10 @@ export default class RoomBaseInfo extends React.Component {
     );
   }
 
+  getTags() {
+
+  }
+
   render() {
     const {roomBaseInfo} = this.state;
 
@@ -67,6 +72,16 @@ export default class RoomBaseInfo extends React.Component {
             title={roomBaseInfo.owner}
             subTitle={roomBaseInfo.roomTitle}
             avatar={{src: roomBaseInfo.avatarURL}}
+            extra={
+              roomBaseInfo.isLive ? 
+              [
+                <Tag color="red">{'热度 ' + roomBaseInfo.hotNumber}</Tag>,
+                <Tag color="orange">{'开播时间 ' + roomBaseInfo.startTime}</Tag>
+              ] :
+              [
+                <Tag color="red">{'未开播'}</Tag>,
+              ]
+            }
           >
             {this.props.children}
           </PageHeader>
