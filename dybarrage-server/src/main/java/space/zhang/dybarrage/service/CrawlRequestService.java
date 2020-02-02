@@ -35,6 +35,7 @@ public class CrawlRequestService {
                             if(liveProcess.getLife() <= 0) {
                                 liveProcess.getProcess().destroy();
                                 iterator.remove();
+                                crawlingProcesses.remove(roomId);
                                 logger.info("destroy crawl process: " + roomId);
                             }
                         }
