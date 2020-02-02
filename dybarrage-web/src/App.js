@@ -32,7 +32,7 @@ export default class App extends React.Component {
       return (
         <Result
           title="未指定房间！"
-          subTitle="在下方输入房间号回车，开始抓取指定房间弹幕"
+          subTitle="在下方输入房间号后回车确认，开始抓取指定房间弹幕"
           extra={
             <Input.Search
               placeholder="房间号"
