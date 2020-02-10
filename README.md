@@ -20,7 +20,7 @@ npm install
 
 ### 准备
 
-1. 确保本地mysql数据库处于可用状态
+1. 确保本地mysql数据库处于可用状态，使用`set global time_zone="+8:00"`设置正确的时区
 2. 打开dybarrage-crawler中的`config.py`文件，修改其中的mysql连接设置
 3. 打开dybarrage-server中的`application.properties`文件，修改其中的`crawler.path`为`dybarrage-crawler`的绝对路径
 
